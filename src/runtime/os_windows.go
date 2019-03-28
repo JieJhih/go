@@ -284,13 +284,13 @@ func getproccount() int32 {
 			}
 		}
 		if n != 0 {
-			return int32(n)
+			return int64(n)
 		}
 	}
 	// use GetSystemInfo if GetProcessAffinityMask fails
 	var info systeminfo
 	stdcall1(_GetSystemInfo, uintptr(unsafe.Pointer(&info)))
-	return int32(info.dwnumberofprocessors)
+	return int64(info.dwnumberofprocessors)
 }
 
 func getPageSize() uintptr {
